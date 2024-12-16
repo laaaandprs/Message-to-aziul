@@ -14,7 +14,7 @@ body {
 }
 
 .page {
-  margin-top: 13px;
+  margin-top: 15px;
   justify-content: center;
   position: absolute;
   width: 95%;
@@ -96,7 +96,7 @@ body {
 }
 
 p{
-font-size: 11.7px;
+font-size: 12px;
 }
 
 img {
