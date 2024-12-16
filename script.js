@@ -1,55 +1,60 @@
-      //message 
-    $("#messageState").on("change", () => {
-        $(".message").removeClass("openNor closeNor");
-        if ($("#messageState").is(":checked")) {
-            $(".message").removeClass("closed no-anim").addClass("openNor");
-            $(".heart").removeClass("closeHer openedHer").addClass("openHer");
-            $(".container").stop().animate({"backgroundColor": "#f48fb1"}, 2000);
-            console.log("Abrindo");
-        } else {
-            $(".message").removeClass("no-anim").addClass("closeNor");
-            $(".heart").removeClass("openHer openedHer").addClass("closeHer");
-            $(".container").stop().animate({"backgroundColor": "#fce4ec"}, 2000);
-            console.log("fechando");
-        }
+function showLanterns() {
+  const canvas = document.getElementById('lantern-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const lanternImage = new Image();
+  lanternImage.src = 'img/lantern1.png'; // Replace with your lantern image URL
+
+  const lanterns = [];
+
+  function createLantern() {
+    const lantern = {
+      x: Math.random() * canvas.width,
+      y: canvas.height + Math.random() * 100,
+      size: Math.random() * 40 + 30,
+      speed: Math.random() * 2 + 1,
+    };
+    lanterns.push(lantern);
+  }
+
+  function drawLanterns() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    lanterns.forEach((lantern, index) => {
+      ctx.drawImage(lanternImage, lantern.x, lantern.y, lantern.size, lantern.size);
+
+      lantern.y -= lantern.speed;
+      if (lantern.y + lantern.size < 0) {
+        lanterns.splice(index, 1);
+        createLantern();
+      }
     });
 
-    $(".message").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-        console.log("Animation End");
-        if ($(this).hasClass("closeNor"))
-            $(this).addClass("closed");
-        $(this).removeClass("openNor closeNor").addClass("no-anim");
-    });
+    requestAnimationFrame(drawLanterns);
+  }
 
-    $(".heart").on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-        console.log("Animation End");
-        if (!$(this).hasClass("closeHer"))
-            $(this).addClass("openedHer beating");
-        else
-            $(this).addClass("no-anim").removeClass("beating");
-        $(this).removeClass("openHer closeHer");
-    });
-        //image slider
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slides img');
-        
-        function showSlide(n) {
-            if (n >= slides.length) {
-                slideIndex = 0;
-            } else if (n < 0) {
-                slideIndex = slides.length - 1;
-            } else {
-                slideIndex = n;
-            }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-            slides[slideIndex].style.display = 'block';
-        }
+  for (let i = 0; i < 20; i++) {
+    createLantern();
+  }
 
-        function changeSlide(n) {
-            showSlide(slideIndex += n);
-        }
+  lanternImage.onload = drawLanterns;
+}
 
-        // Initially display the first slide
-        showSlide(slideIndex);
+let currentPage = 1;
+
+function nextPage() {
+  if (currentPage < 12) {
+    document.getElementById(`page${currentPage}`).style.transform = 'rotateY(-180deg)';
+    currentPage++;
+    document.getElementById(`page${currentPage}`).style.transform = 'rotateY(0deg)';
+  }
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    document.getElementById(`page${currentPage}`).style.transform = 'rotateY(-180deg)';
+    currentPage--;
+    document.getElementById(`page${currentPage}`).style.transform = 'rotateY(0deg)';
+  }
+}
