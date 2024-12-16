@@ -1,224 +1,154 @@
-  h3, p {
-            font-family: 'Georgia', sans-serif;
-        }
+body {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #861657;
+  background-image: linear-gradient(120deg, #861657 40%, #ffa69e 100%);
+  font-family: 'Arial', sans-serif;
+}
 
-        p {
-            text-indent: 40px;
-            font-size: 13px;
-        }
+#book {
+  width: 385px;
+  height: 300px;
+  perspective: 1000px;
+}
 
-        h3 {
-            font-weight: 200;
-            font-size: 18px;
-        }
+.page {
+  margin-top: 15px;
+  justify-content: center;
+  position: absolute;
+  width: 95%;
+  height: 50%;
+  text-align: center;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
 
-        h1 {
-            font-size: 13px;
-         }
+#page1 {
+  z-index: 12;
+}
 
-        body {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-    align-items: center;
-    background: url("https://www.wallpapertip.com/wmimgs/28-281281_background-tangled-lantern-scene.jpg")
-      center center no-repeat;
-    background-size: cover;
-        }
+#page2 {
+  z-index: 11;
+  transform: rotateY(-180deg);
+}
 
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+#page3 {
+  z-index: 10;
+  transform: rotateY(-180deg);
+}
 
-        .heart {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            text-align: center;
-            transform: translate(-50%, -50%);
-            transition: transform 2s;
-            z-index: 1;
-        }
+#page4 {
+  z-index: 9;
+  transform: rotateY(-180deg);
+}
 
-        .heart > img {
-            width: 150px;
-            height: auto;
-        }
+#page5 {
+  z-index: 8;
+  transform: rotateY(-180deg);
+}
 
-        .message {
-            padding: 20px;
-            background-color: #861657;
+#page6 {
+  z-index: 7;
+  transform: rotateY(-180deg);
+}
 
-            background-image:   Linear-gradient(326deg, #861657 10%,  #ffa69e 72%);
-            min-width: 350px;
-            height: 75%;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            overflow: hidden;
-            animation-name: openmsg;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-play-state: paused;
-            animation-fill-mode: forwards;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-            border-radius: 5px;
-        }
+#page7 {
+  z-index: 6;
+  transform: rotateY(-180deg);
+}
 
-        .heart > img:hover {
-            animation-name: beat;
-            animation-duration: 2s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-play-state: running;
-        }
+#page8 {
+  z-index: 5;
+  transform: rotateY(-180deg);
+}
 
-        @keyframes beat {
-            0% {
-                width: 150px;
-            }
-            25% {
-                width: 158px;
-            }
-            30% {
-                width: 150px;
-            }
-            50% {
-                width: 145px;
-            }
-            60% {
-                width: 150px;
-            }
-            75% {
-                width: 158px;
-            }
-            100% {
-                width: 150px;
-            }
-        }
+#page9 {
+  z-index: 4;
+  transform: rotateY(-180deg);
+}
 
-        @keyframes openmsg {
-            0% {
-                height: 0px;
-                padding: 0px 20px;
-            }
-            100% {
-                height: 75%;
-                padding: 20px 20px;
-            }
-        }
+#page10 {
+  z-index: 3;
+  transform: rotateY(-180deg);
+}
 
-        @keyframes heartMove {
-            0% {
-                top: 50%;
-            }
-            100% {
-                top: 83%;
-                transform: translate(-50%, 0);
-            }
-        }
+#page11 {
+  z-index: 2;
+  transform: rotateY(-180deg);
+}
 
-        .openNor {
-            animation-direction: normal;
-            animation-play-state: running;
-        }
+#page12 {
+  z-index: 1;
+  transform: rotateY(-180deg);
+}
 
-        .closeNor {
-            animation-direction: reverse;
-            animation-play-state: running;
-        }
+.page .content {
+  background-color: #fff;
+  background-image:   Linear-gradient(120deg, #861657 30%,  #ffa69e 112%);
+  border-radius:10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-        .no-anim {
-            animation: none;
-        }
+p{
+font-size: 14.5px;
+}
 
-        .closed {
-            height: 0px;
-            padding: 0px 20px;
-        }
+img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 5px;
+}
 
-        .openHer {
-            animation-name: heartMove;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-play-state: running;
-            animation-fill-mode: forwards;
-        }
+button {
+  background-color: #ff69b4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 4px;
+}
 
-        .closeHer {
-            animation-name: heartMove;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-play-state: running;
-            animation-direction: reverse;
-            animation-fill-mode: forwards;
-        }
+button:hover {
+  background-color: #ff1493;
+ }
+ 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust the gap as needed */
+}
 
-        .beating > img {
-            animation-name: beat;
-            animation-duration: 2s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-play-state: running;
-        }
+.tribute {
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
-        .openedHer {
-            top: 83%;
-            transform: translate(-50%, 0);
-        }
-       
-         /*image slider*/
-          .slider {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
+#birthday-card {
+   background-image:   Linear-gradient(120deg, #861657 70%,  #ffa69e 120%);
+  text-align: center;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slides img {
-            width: 100px;
-            position: relative;
-            left: 35%;
-            border-radius: 5px 5px 5px 5px;
-        }
-
-        /* Next and previous buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: 5px;
-            padding: 10px;
-            margin-top: -10px;
-            color: black;
-            font-weight: bold;
-            font-size: 12px;
-            transition: 0.6s ease;
-            border-radius: 5px 5px 5px 5px;
-            background-color: white;
-        }
-
-        .next {
-            right: 5%;
-            border-radius: 5px 5px 5px 5px;
-        }
-        .prev {
-           right: 85%;
-        }
-
-        /* On hover, add a black background color */
-        .prev:hover, .next:hover {
-            background-color: white;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.19), 3px 6px 6px rgba(0, 0, 0, 0.23);
-            border-radius: 5px;
-        }
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20; /* Set a high z-index to make sure the canvas is on top */
+  pointer-events: none; /* Allows clicks to pass through the canvas */
+  width: 100%;
+  height: 100%;
+}
