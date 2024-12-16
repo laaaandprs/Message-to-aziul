@@ -144,7 +144,7 @@ button:hover {
 }
 
 canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 20; /* Set a high z-index to make sure the canvas is on top */
